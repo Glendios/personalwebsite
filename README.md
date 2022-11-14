@@ -1,2 +1,2 @@
-# kurosakinoel.com
-first website test
+# phantom world
+let the destruction of the universe begin...
