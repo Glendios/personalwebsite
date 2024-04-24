@@ -7,7 +7,7 @@ setTimeout(function(){
   //document.querySelector('.arrow-reshow').style.display = 'block';  
   setTimeout(function(){
     timeHideElement.style.maxHeight = '0';
-  },500);
+  },100);
 },3000);
 
 var dictButton = document.getElementById("dictionarySearchButton");
