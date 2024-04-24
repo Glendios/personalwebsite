@@ -1,0 +1,31 @@
+/* styles.css */
+
+html {
+  scroll-behavior: smooth;
+ }
+
+body {
+  font-family: Century Gothic, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#wrapper {
+  margin: auto;
+  padding: 10px;
+}
+
+h1, p {
+  text-align: center;
+}
+
+iframe {
+       border: none;  
+  align-items: center;
+  height:650px;
+  justify-content: center;
+    }
+
+.iframe-container {
+  display: flex;
+}

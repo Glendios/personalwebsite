@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>CodePen - cnds</title>
+  <link rel="stylesheet" href="./cndictstyle.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<head>
+  <title>CN to KR/JP/EN/Pronunciation Dictionary</title>
+</head>
+<body>
+  <div id="wrapper">
+    <h1>CN to KR/JP/EN/Pronunciation Dictionary</h1>
+    <p>Enter a search term below to search on all websites simultaneously:</p>
+    
+    <input type="text" id="searchInputBox" placeholder="Enter search term">
+    <button id="dictionarySearchButton" onclick="searchWebsites()">Search</button>
+    
+    <input type="text" id="translateInputBox" placeholder="Enter Words to Translate">
+    <button id="translateButton" onclick="translateWebsites()">Translate</button>
+    
+    <button onclick="scrollToTop()">Scroll To Top</button>
+<!--     <button onclick="scrollToTopIframes()">Scroll To Iframe</button> -->
+    
+    <br>
+    <iframe id="naverFrame" width="33%" src="about:blank" scrolling="yes"></iframe>
+  <!--src="about:blank" style="border: 0px none; margin-left: 185px; height: 459px; margin-top: 2px; width: 926px;"></iframe>-->
+    <iframe id="weblioFrame" width="33%" src="about:blank" scrolling="yes"></iframe>
+    <iframe id="reversoFrame" width="33%" src="about:blank" scrolling="yes"></iframe>
+    <br>
+    <iframe id="forvoFrame" width="22%" src="about:blank" scrolling="yes"></iframe>
+    <iframe id="deeplFrame" width="70%" src="about:blank" scrolling="yes"></iframe>
+    
+    <button onclick="scrollToTop()">Scroll To Toep</button>
+  </div>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./cndictscript.js"></script>
+
+</body>
+</html>
