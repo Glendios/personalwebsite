@@ -1,3 +1,28 @@
+var timeHideElement = document.querySelector('.tohide-element');
+setTimeout(function(){
+  timeHideElement.style.transform = 'translateY(-500%)';
+  timeHideElement.style.margin = 0;
+  //timeHideElement.style.maxHeight = '0';
+  //document.querySelector('.content').style.marginTop = '0';
+  //document.querySelector('.arrow-reshow').style.display = 'block';  
+  setTimeout(function(){
+    timeHideElement.style.maxHeight = '0';
+  },500);
+},3000);
+
+var dictButton = document.getElementById("dictionarySearchButton");
+var dictSearchBox = document.getElementById("searchInputBox");
+dictButton.addEventListener("click", function(){
+  var str = dictSearchBox.value;
+  console.log(str);
+});
+dictSearchBox.addEventListener("keydown",function(event){
+  //if ENTER, press button
+  if(event.keyCode == 13){
+    dictButton.click();
+  }
+});
+
 var dictButton = document.getElementById("dictionarySearchButton");
 var dictSearchBox = document.getElementById("searchInputBox");
 dictButton.addEventListener("click", function(){

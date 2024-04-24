@@ -1,5 +1,17 @@
 /* styles.css */
 
+tohide-element{
+  transition: transform 0.5s ease;
+  overflow: hidden;
+  display:hide;
+  max-height:auto;
+}
+
+.content {
+    margin-top: auto;
+    transition: margin-top 0.5s ease;
+  }
+
 html {
   scroll-behavior: smooth;
  }
