@@ -53,11 +53,15 @@ function searchWebsites() {
       var searchTerm = document.getElementById("searchInputBox").value;
 
       // Update the source of each iframe to include the search term
+      // Update the source of each iframe to include the search term
       document.getElementById("naverFrame").src = "https://zh.dict.naver.com/#/search?query=" + encodeURIComponent(searchTerm);
       document.getElementById("weblioFrame").src = "https://cjjc.weblio.jp/content/" + encodeURIComponent(searchTerm);
       document.getElementById("reversoFrame").src = "https://context.reverso.net/%E7%BF%BB%E8%AF%91/%E4%B8%AD%E6%96%87-%E8%8B%B1%E8%AF%AD/" + encodeURIComponent(searchTerm);
       document.getElementById("forvoFrame").src = "https://forvo.com/word/" + encodeURIComponent(searchTerm);
       document.getElementById("deeplFrame").src = "https://www.deepl.com/translator#zh/en/" + encodeURIComponent(searchTerm);
+      document.getElementById("papagoFrame").src = "https://papago.naver.com/?sk=zh-CN&tk=en&st=" + encodeURIComponent(searchTerm);
+      document.getElementById("baiduFrame").src = "https://fanyi.baidu.com/mtpe-individual/multimodal?query=" + encodeURIComponent(searchTerm) + "&lang=zh2en";
+}
 }
 
 function translateWebsites(){
