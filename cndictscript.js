@@ -62,7 +62,6 @@ function searchWebsites() {
       document.getElementById("papagoFrame").src = "https://papago.naver.com/?sk=zh-CN&tk=en&st=" + encodeURIComponent(searchTerm);
       document.getElementById("baiduFrame").src = "https://fanyi.baidu.com/mtpe-individual/multimodal?query=" + encodeURIComponent(searchTerm) + "&lang=zh2en";
 }
-}
 
 function translateWebsites(){
       var translateInput = document.getElementById("translateInputBox").value;
