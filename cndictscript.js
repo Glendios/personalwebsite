@@ -11,7 +11,7 @@ function requestDeepl(userInput){
   };
 
 //  const apiUrl = 'http://localhost:10000';
-  const apiUrl = 'https://deeplapi-b3sa.onrender.com';
+  const apiUrl = 'https://deeplapi-b3sa.onrender.com/translate';
 
   // Set up the Axios POST request
   axios.post(apiUrl, requestData, {
