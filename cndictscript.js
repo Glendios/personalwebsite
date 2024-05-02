@@ -1,8 +1,36 @@
 //cndictscript.js
 //import {requestDeepl} from './cndictmodule.js';
+//const { requestDeepl } = require('./cndictmodule.js');
 
+//const axios = require('axios');
 
-var deeplOutput = document.getElementById("translateDeeplBox").value;
+function requestDeepl(userInput){
+  var requestData = {
+    text: userInput,
+    target_lang: 'ZH'
+  };
+
+//  const apiUrl = 'http://localhost:10000';
+  const apiUrl = 'https://deeplapi-b3sa.onrender.com';
+
+  // Set up the Axios POST request
+  axios.post(apiUrl, requestData, {
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'checker-header': 'translate-please'
+    }
+  })
+  .then(response => {
+    console.log('Response:', response.data);
+    return response.data;
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+}
+
+var deeplOutput = document.getElementById("translateDeeplBox");
+var deeplStatus = document.getElementById("deeplBoxStatus");
 
 
 var timeHideElement = document.querySelector('.tohide-element');
@@ -72,12 +100,16 @@ function searchWebsites() {
 
 function translateWebsites(){
       var translateInput = document.getElementById("translateInputBox").value;
-      //document.getElementById("forvoFrame").src = "https://forvo.com/word/" + encodeURIComponent(translateInput);
       document.getElementById("deeplFrame").src = "https://www.deepl.com/translator#zh/en/" + encodeURIComponent(translateInput);
       document.getElementById("papagoFrame").src = "https://papago.naver.com/?sk=zh-CN&tk=en&st=" + encodeURIComponent(translateInput);
       document.getElementById("baiduFrame").src = "https://fanyi.baidu.com/mtpe-individual/multimodal?query=" + encodeURIComponent(translateInput) + "&lang=zh2en";
-      deeplOutput = 'Sending API request...';
-      //deeplOutput = requestDeepl(translateInput);
+      deeplStatus.placeholder = 'Sending API request...';
+      requestDeepl(translateInput)
+        .then(response =>{
+          console.log('Response: ', response.data);
+          deeplOutput.value = response.data;
+          deeplStatus.placeholder = 'Idle';
+        });
 }
 
 function scrollToTop(){

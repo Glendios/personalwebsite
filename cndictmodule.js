@@ -1,7 +1,7 @@
 //cndictmodule.js
 const axios = require('axios');
 
-export function requestDeepl(userInput){
+function requestDeepl(userInput){
   var requestData = {
     text: userInput,
     target_lang: 'ZH'
@@ -25,3 +25,5 @@ export function requestDeepl(userInput){
     console.error('Error:', error);
   });
 }
+
+module.exports = { requestDeepl };
