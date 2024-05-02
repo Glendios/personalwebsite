@@ -1,3 +1,10 @@
+//cndictscript.js
+//import {requestDeepl} from './cndictmodule.js';
+
+
+var deeplOutput = document.getElementById("translateDeeplBox").value;
+
+
 var timeHideElement = document.querySelector('.tohide-element');
 setTimeout(function(){
   timeHideElement.style.transform = 'translateY(-500%)';
@@ -67,6 +74,10 @@ function translateWebsites(){
       var translateInput = document.getElementById("translateInputBox").value;
       //document.getElementById("forvoFrame").src = "https://forvo.com/word/" + encodeURIComponent(translateInput);
       document.getElementById("deeplFrame").src = "https://www.deepl.com/translator#zh/en/" + encodeURIComponent(translateInput);
+      document.getElementById("papagoFrame").src = "https://papago.naver.com/?sk=zh-CN&tk=en&st=" + encodeURIComponent(translateInput);
+      document.getElementById("baiduFrame").src = "https://fanyi.baidu.com/mtpe-individual/multimodal?query=" + encodeURIComponent(translateInput) + "&lang=zh2en";
+      deeplOutput = 'Sending API request...';
+      //deeplOutput = requestDeepl(translateInput);
 }
 
 function scrollToTop(){
