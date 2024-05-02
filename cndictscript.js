@@ -16,7 +16,7 @@ function requestDeepl(userInput){
   // Set up the Axios POST request
   axios.post(apiUrl, requestData, {
     headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
+        'Content-Type': 'application/json',
         'checker-header': 'translate-please'
     }
   })
