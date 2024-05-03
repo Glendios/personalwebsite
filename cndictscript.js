@@ -5,6 +5,8 @@
 //const axios = require('axios');
 
 const apiUrl = 'https://deeplapi-b3sa.onrender.com/translate';
+var deeplOutput = document.getElementById("translateDeeplBox");
+var deeplStatus = document.getElementById("deeplBoxStatus");
 
 function requestDeepl(userInput){
   var requestData = {
@@ -34,6 +36,7 @@ function requestDeepl(userInput){
     if (translations && translations.length > 0) {
       const translatedText = translations[0].text;
       console.log('Translated Text:', translatedText);
+      deeplOutput = translatedText;
       return translatedText;
     } else {
       throw new Error('No translations found in the response');
@@ -42,8 +45,6 @@ function requestDeepl(userInput){
   .catch(error => console.error('Error:', error));
 }
 
-var deeplOutput = document.getElementById("translateDeeplBox");
-var deeplStatus = document.getElementById("deeplBoxStatus");
 
 
 var timeHideElement = document.querySelector('.tohide-element');
