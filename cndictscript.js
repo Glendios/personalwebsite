@@ -117,6 +117,7 @@ function translateWebsites(){
       document.getElementById("papagoFrame").src = "https://papago.naver.com/?sk=zh-CN&tk=en&st=" + encodeURIComponent(translateInput);
       document.getElementById("baiduFrame").src = "https://fanyi.baidu.com/mtpe-individual/multimodal?query=" + encodeURIComponent(translateInput) + "&lang=zh2en";
       deeplStatus.placeholder = 'Sending API request...';
+      deeplOutput.value = requestDeepl(translateInput);
       requestDeepl(translateInput)
         .then(response =>{
           console.log('Response: ', response.data);
