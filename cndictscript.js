@@ -4,23 +4,29 @@
 
 //const axios = require('axios');
 
-const apiUrl = 'https://deeplapi-b3sa.onrender.com/translate';
 var deeplOutput = document.getElementById("translateDeeplBox");
 var deeplStatus = document.getElementById("deeplBoxStatus");
+var textArray;
 
-function requestDeepl(userInput){
+function requestDeepl(userInput) {
+  
+  if (Array.isArray(userInput)) {
+    textArray = userInput; // Use the array directly if it's already an array
+  } else {
+    textArray = [userInput]; // Wrap the string in an array if it's a single string
+  }
+
   var requestData = {
-    text: userInput,
+    text: textArray,
     target_lang: 'ZH'
   };
 
-//  const apiUrl = 'http://localhost:10000';
-
-  fetch(url, {
+  fetch('https://deeplapi-b3sa.onrender.com/translate', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'User-Agent': 'YourApp/1.2.3'
+      'User-Agent': 'KRSK CNDict/1.0.0',
+      'checker-header': 'translate-please'
     },
     body: JSON.stringify(requestData)
   })
@@ -36,7 +42,8 @@ function requestDeepl(userInput){
     if (translations && translations.length > 0) {
       const translatedText = translations[0].text;
       console.log('Translated Text:', translatedText);
-      deeplOutput = translatedText;
+      deeplOutput.value = translatedText;
+      deeplStatus.placeholder = 'DeepL API Status: Idle';
       return translatedText;
     } else {
       throw new Error('No translations found in the response');
@@ -100,8 +107,6 @@ translateBox.addEventListener("keydown",function(event){
 
 function searchWebsites() {
       var searchTerm = document.getElementById("searchInputBox").value;
-
-      // Update the source of each iframe to include the search term
       // Update the source of each iframe to include the search term
       document.getElementById("naverFrame").src = "https://zh.dict.naver.com/#/search?query=" + encodeURIComponent(searchTerm);
       document.getElementById("weblioFrame").src = "https://cjjc.weblio.jp/content/" + encodeURIComponent(searchTerm);
@@ -110,6 +115,8 @@ function searchWebsites() {
       document.getElementById("deeplFrame").src = "https://www.deepl.com/translator#zh/en/" + encodeURIComponent(searchTerm);
       document.getElementById("papagoFrame").src = "https://papago.naver.com/?sk=zh-CN&tk=en&st=" + encodeURIComponent(searchTerm);
       document.getElementById("baiduFrame").src = "https://fanyi.baidu.com/mtpe-individual/multimodal?query=" + encodeURIComponent(searchTerm) + "&lang=zh2en";
+      //deeplStatus.placeholder = 'Sending API request...';
+      //requestDeepl(searchTerm);
 }
 
 function translateWebsites(){
@@ -118,13 +125,7 @@ function translateWebsites(){
       document.getElementById("papagoFrame").src = "https://papago.naver.com/?sk=zh-CN&tk=en&st=" + encodeURIComponent(translateInput);
       document.getElementById("baiduFrame").src = "https://fanyi.baidu.com/mtpe-individual/multimodal?query=" + encodeURIComponent(translateInput) + "&lang=zh2en";
       deeplStatus.placeholder = 'Sending API request...';
-      deeplOutput.value = requestDeepl(translateInput);
-      requestDeepl(translateInput)
-        .then(response =>{
-          console.log('Response: ', response.data);
-          deeplOutput.value = response.data;
-          deeplStatus.placeholder = 'Idle';
-        });
+      requestDeepl(translateInput);
 }
 
 function scrollToTop(){
