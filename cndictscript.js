@@ -4,6 +4,8 @@
 
 //const axios = require('axios');
 
+const apiUrl = 'https://deeplapi-b3sa.onrender.com/translate';
+
 function requestDeepl(userInput){
   var requestData = {
     text: userInput,
@@ -11,22 +13,33 @@ function requestDeepl(userInput){
   };
 
 //  const apiUrl = 'http://localhost:10000';
-  const apiUrl = 'https://deeplapi-b3sa.onrender.com/translate';
 
-  // Set up the Axios POST request
-  axios.post(apiUrl, requestData, {
+  fetch(url, {
+    method: 'POST',
     headers: {
-        'Content-Type': 'application/json',
-        'checker-header': 'translate-please'
-    }
+      'Content-Type': 'application/json',
+      'User-Agent': 'YourApp/1.2.3'
+    },
+    body: JSON.stringify(requestData)
   })
   .then(response => {
-    console.log('Response:', response.data);
-    return response.data;
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+    return response.json();
   })
-  .catch(error => {
-    console.error('Error:', error);
-  });
+  .then(data => {
+    // Parse the JSON response and extract the text field
+    const translations = data.translations;
+    if (translations && translations.length > 0) {
+      const translatedText = translations[0].text;
+      console.log('Translated Text:', translatedText);
+      return translatedText;
+    } else {
+      throw new Error('No translations found in the response');
+    }
+  })
+  .catch(error => console.error('Error:', error));
 }
 
 var deeplOutput = document.getElementById("translateDeeplBox");
