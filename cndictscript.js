@@ -21,7 +21,7 @@ function requestDeepl(userInput) {
     target_lang: 'ZH'
   };
 
-  fetch('https://deeplapi-b3sa.onrender.com/translate', {
+  fetch('https://deeplapi-xx79.onrender.com/translate', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -105,7 +105,7 @@ translateBox.addEventListener("keydown",function(event){
   }
 });
 
-function searchWebsites() {
+function searchWebsites(){
       var searchTerm = document.getElementById("searchInputBox").value;
       // Update the source of each iframe to include the search term
       document.getElementById("naverFrame").src = "https://zh.dict.naver.com/#/search?query=" + encodeURIComponent(searchTerm);
