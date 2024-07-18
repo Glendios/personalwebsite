@@ -116,6 +116,7 @@ function searchWebsites(){
       document.getElementById("deeplFrame").src = "https://www.deepl.com/translator#zh/en/" + encodeURIComponent(searchTerm);
       document.getElementById("papagoFrame").src = "https://papago.naver.com/?sk=zh-CN&tk=en&st=" + encodeURIComponent(searchTerm);
       document.getElementById("baiduFrame").src = "https://fanyi.baidu.com/mtpe-individual/multimodal?query=" + encodeURIComponent(searchTerm) + "&lang=zh2en";
+      document.getElementById("hanziFrame").src = "https://www.qhanzi.com/";
       //deeplStatus.placeholder = 'Sending API request...';
       //requestDeepl(searchTerm);
 }
